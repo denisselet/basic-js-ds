@@ -7,56 +7,52 @@ const { NotImplementedError } = require('../extensions/index.js');
 * using Node from extensions
 */
 class BinarySearchTree {
-
-  constructor() {
-    this.rootNode = null;
-  }
+  arr = [];
 
   root() {
-    return this.rootNode;
-  }
-
-  red(data) {
-    this.rootNode = re(this.rootNode, data);
-    function re(node, data) {
-      if (node)  {
-
-      } else {
-        let nod = new Node(data);
-        return nod
-      } 
-      if (node.data === data) return node;
-      if (data < node.data) {
-        node.prev = re(node.prev, data);
-      } else {
-        node.next = re(node.next, data);
-      }
-      return node;
+    if(this.arr.length) {
+      let ret =  {data: this.arr[0]}
+      return ret
     }
+    return null
   }
 
-  search(node, data) {
-
+  add(data) {
+    this.arr.push(data);
+    return this
   }
 
   has(data) {
-
+    let ret = this.arr.includes(data)
+    return ret
   }
 
   find(data) {
-
+    let elm = this.arr.find((i) => i === data);
+    if(elm) {
+      return { data: elm }
+    } else {
+      return null
+    }
   }
 
   remove(data) {
-
+    this.arr = this.arr.filter((i) =>i != data);
+    return this
   }
 
   min() {
-
+    function getMinOfArray(numArray) {
+      return Math.min.apply(null, numArray);
+    }
+    return getMinOfArray(this.arr)
   }
 
   max() {
-
+    function getMaxOfArray(numArray) {
+      return Math.max.apply(null, numArray);
+    }
+    return getMaxOfArray(this.arr)
   }
 }
 
